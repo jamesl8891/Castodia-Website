@@ -1,65 +1,92 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
+  const features = [
+    "Service User Timelines",
+    "eMAR",
+    "Incident Recording",
+    "Behaviour Monitoring",
+    "Wellbeing Tracking",
+    "Digital Body Maps",
+    "Handover Management",
+    "Reporting & Analytics",
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-slate-950 text-white">
+      <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 sm:px-10 lg:px-14">
+        <header className="flex items-center justify-end">
+          <Link
+            href="https://app.castodia.co.uk/login"
+            className="rounded-full border border-white/15 bg-white/10 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-white/20"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Log in
+          </Link>
+        </header>
+
+        <section className="grid flex-1 items-center gap-14 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">
+          <div>
+            <div className="mb-10">
+              <Image
+                src="/logo.png"
+                alt="Castodia"
+                width={430}
+                height={125}
+                priority
+                className="drop-shadow-[0_0_35px_rgba(45,212,191,0.18)]"
+              />
+            </div>
+
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.35em] text-teal-300">
+              Helping teams care more
+            </p>
+
+            <h1 className="max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+              Built around care.
+              <br />
+              Designed for teams.
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+              Castodia is developed by experienced health and social care professionals who understand the challenges faced by providers, managers and frontline staff. Every feature is designed with real-world practice in mind.
+            </p>
+
+            <div className="mt-10 inline-flex rounded-full border border-teal-300/25 bg-teal-300/10 px-5 py-3 text-sm font-semibold text-teal-200">
+              Currently under active development by Castodia LTD
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-2xl shadow-black/30 backdrop-blur">
+            <div className="rounded-[1.5rem] bg-slate-900/90 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
+                Platform areas
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                {features.map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-100"
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-400/20 text-xs text-teal-300">
+                      ✓
+                    </span>
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="border-t border-white/10 py-6">
+          <div className="flex flex-col gap-2 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 Castodia LTD</p>
+            <p>Digital care management software in development.</p>
+          </div>
+        </footer>
+      </section>
+    </main>
   );
 }
